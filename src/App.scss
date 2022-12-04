@@ -1,0 +1,24 @@
+// CSS reset
+
+body,
+body * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Buttons
+
+.card {
+  width: 40%;
+  height: 500px;
+  background-color: skyblue;
+  margin: 40px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
