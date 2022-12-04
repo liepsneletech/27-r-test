@@ -1,25 +1,24 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import "./App.scss";
-import Card from "./Components/Card";
 
 function App() {
-  const [cards, setCards] = useState([]);
+  const [shape, setShape] = useState(true);
 
-  useEffect(() => {
-    fetch("https://v2.jokeapi.dev/joke/Programming?amount=10")
-      .then((res) => res.json())
-      .then((data) => setCards(data.jokes));
-  }, []);
+  const change = () => {
+    setShape((shape) => !shape);
+  };
 
   return (
-    <div className="App">
-      <ul className="container">
-        {cards?.map((c, i) => {
-          return <Card key={i} {...c} />;
-        })}
-      </ul>
-    </div>
+    <>
+      <button className="btn" onClick={change}>
+        CHANGE
+      </button>
+      <div
+        className="circle"
+        style={{ borderRadius: shape ? "50%" : "0%" }}
+      ></div>
+    </>
   );
 }
 
