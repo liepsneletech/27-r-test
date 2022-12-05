@@ -13,31 +13,37 @@ function App() {
     ]);
   };
 
-  console.log(stroke);
-
   const remove = () => {
     setStroke((s) => [...s].slice(0, -1));
   };
 
   const rotateLeft = () => {
-    setStroke((s) => [
-      ...s,
-      { transform: `rotate(-${stroke.length * 10}deg)` },
+    setStroke(() => [
+      ...stroke,
+      {
+        transform: `rotate(-10deg)`,
+      },
     ]);
   };
 
   const rotateRight = () => {
-    setStroke((s) => [...s, { transform: `rotate(${stroke.length * 10}deg)` }]);
+    setStroke((s) => [
+      ...s,
+      {
+        transform: `rotate(10deg)`,
+      },
+    ]);
   };
 
   return (
     <>
       <div className="bin">
-        {stroke.map((s, i) => {
-          console.log(stroke);
-          <div key={i} className="stroke" s={s}></div>;
-        })}
+        {stroke.map((s, i) => (
+          <div key={i} className="stroke" style={s}></div>
+        ))}
       </div>
+
+      {console.log(stroke)}
 
       <div className="btns-container">
         <button className="btn" onClick={add}>
