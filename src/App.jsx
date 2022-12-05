@@ -2,32 +2,57 @@ import { useState } from "react";
 import "./App.scss";
 
 function App() {
-  const [shape, setShape] = useState(true);
+  const [stroke, setStroke] = useState([]);
 
-  const change = () => {
-    setShape((shape) => !shape);
+  const add = () => {
+    setStroke((s) => [
+      ...s,
+      {
+        transform: `rotate(${stroke.length * 10}deg)`,
+      },
+    ]);
   };
 
-  const [color, setColor] = useState(true);
-  const changeColor = () => {
-    setColor((color) => !color);
+  console.log(stroke);
+
+  const remove = () => {
+    setStroke((s) => [...s].slice(0, -1));
+  };
+
+  const rotateLeft = () => {
+    setStroke((s) => [
+      ...s,
+      { transform: `rotate(-${stroke.length * 10}deg)` },
+    ]);
+  };
+
+  const rotateRight = () => {
+    setStroke((s) => [...s, { transform: `rotate(${stroke.length * 10}deg)` }]);
   };
 
   return (
     <>
-      <button className="btn" onClick={change}>
-        CHANGE
-      </button>
-      <button className="btn" onClick={changeColor}>
-        COLOR
-      </button>
-      <div
-        className="circle"
-        style={{
-          borderRadius: shape ? "50%" : "0%",
-          backgroundColor: color ? "skyblue" : "red",
-        }}
-      ></div>
+      <div className="bin">
+        {stroke.map((s, i) => {
+          console.log(stroke);
+          <div key={i} className="stroke" s={s}></div>;
+        })}
+      </div>
+
+      <div className="btns-container">
+        <button className="btn" onClick={add}>
+          ADD
+        </button>
+        <button className="btn" onClick={remove}>
+          REMOVE
+        </button>
+        <button className="btn" onClick={rotateLeft}>
+          LEFT
+        </button>
+        <button className="btn" onClick={rotateRight}>
+          RIGHT
+        </button>
+      </div>
     </>
   );
 }

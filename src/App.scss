@@ -105,3 +105,22 @@ ul {
   background-color: skyblue;
   border-radius: 50%;
 }
+
+.stroke {
+  width: 2px;
+  height: 60px;
+  background-color: #666;
+  margin: 40px auto;
+}
+
+.btns-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.bin {
+  display: flex;
+  justify-content: center;
+}
